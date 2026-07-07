@@ -7,18 +7,18 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..=50);
     loop {
         println!("Make your bet.");
-        let mut guess = String::new();
+        let mut bet = String::new();
 
         io::stdin()
-            .read_line(&mut guess)
-            .expect("The fuck is that bullshit?");
-        let guess: u32 = match guess.trim().parse() {
+            .read_line(&mut bet)
+            .expect("The fuck was that bullshit?");
+        let bet: u32 = match bet.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
-        println!("You guessed: {guess}");
+        println!("Your bet: {bet}");
 
-        match guess.cmp(&secret_number) {
+        match bet.cmp(&secret_number) {
             Ordering::Less => println!("You lose!"),
             Ordering::Greater => println!("You lose!"),
             Ordering::Equal => {
